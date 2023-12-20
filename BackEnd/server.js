@@ -26,9 +26,9 @@ const mongoose = require('mongoose');
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://admin:admin@martinscluster.w5rtkz0.mongodb.net/DB14?retryWrites=true&w=majority');
+  await mongoose.connect('mongodb+srv://g00384389:HD4bksPt35xJGUGp@datarep1.kus8esv.mongodb.net/?retryWrites=true&w=majority');
 
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+  
 }
 
 const bookSchema = new mongoose.Schema({
