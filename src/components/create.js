@@ -4,22 +4,22 @@ import axios from "axios";
 function Create() {
 
     const [title, setTitle] = useState('');
-    const [cover, setCover] = useState('');
-    const [author, setAuthor] = useState('');
+    const [image, setImage] = useState('');
+    const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
 
     const handleSubmit = (e)=>{
         e.preventDefault();
 
         console.log("Title: "+title+
-        " Cover: "+cover+
-        " Author: "+author+
+        " Image: "+image+
+        " Description: "+description+
         " Price: "+price);
 
         const book = {
             title:title,
-            cover:cover,
-            author:author,
+            image:image,
+            description:description,
             price:price
         };
 
@@ -31,10 +31,10 @@ function Create() {
     // some comment
     return (
         <div>
-            <h2>Hello from create Component!</h2>
+            <h2>Add Product Page</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Add Book Title: </label>
+                    <label>Add Product Title: </label>
                     <input type="text"
                         className="form-control"
                         value={title}
@@ -42,15 +42,15 @@ function Create() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Add Book Cover: </label>
+                    <label>Add product Image: </label>
                     <input type="text"
                         className="form-control"
-                        value={cover}
-                        onChange={(e) => { setCover(e.target.value) }}
+                        value={image}
+                        onChange={(e) => { setImage(e.target.value) }}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Add Book Price: </label>
+                    <label>Add Product Price: </label>
                     <input type="text"
                         className="form-control"
                         value={price}
@@ -58,16 +58,16 @@ function Create() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Add Book Author: </label>
+                    <label>Add Product description: </label>
                     <input type="text"
                         className="form-control"
-                        value={author}
-                        onChange={(e) => { setAuthor(e.target.value) }}
+                        value={description}
+                        onChange={(e) => { setDescription(e.target.value) }}
                     />
                 </div>
                 <div>
                     <input type="submit"
-                    value="Add Book">
+                    value="Add Product">
                         </input>
                 </div>
             </form>

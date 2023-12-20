@@ -6,8 +6,8 @@ export default function Edit() {
     let {id} = useParams();
 
     const [title, setTitle] = useState('');
-    const [cover, setCover] = useState('');
-    const [author, setAuthor] = useState('');
+    const [image, setImage] = useState('');
+    const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
 
     const navigate = useNavigate();
@@ -18,8 +18,8 @@ export default function Edit() {
             axios.get('http://localhost:4000/api/book/'+id)
             .then((response)=>{
                 setTitle(response.data.title);
-                setCover(response.data.cover);
-                setAuthor(response.data.author);
+                setImage(response.data.image);
+                setDescription(response.data.description);
                 setPrice(response.data.price);
             })
             .catch(
@@ -35,8 +35,8 @@ export default function Edit() {
 
         const book = {
             title:title,
-            cover:cover,
-            author:author,
+            image:image,
+            description:description,
             price:price
         }
 
@@ -54,7 +54,7 @@ export default function Edit() {
             <h2>Hello from Edit component!</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Edit Book Title: </label>
+                    <label>Edit Product Title: </label>
                     <input type="text"
                         className="form-control"
                         value={title}
@@ -62,15 +62,15 @@ export default function Edit() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Book Cover: </label>
+                    <label>Edit Product image: </label>
                     <input type="text"
                         className="form-control"
-                        value={cover}
-                        onChange={(e) => { setCover(e.target.value) }}
+                        value={image}
+                        onChange={(e) => { setImage(e.target.value) }}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Book Price: </label>
+                    <label>Edit Product Price: </label>
                     <input type="text"
                         className="form-control"
                         value={price}
@@ -78,16 +78,16 @@ export default function Edit() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Book Author: </label>
+                    <label>Edit Product description: </label>
                     <input type="text"
                         className="form-control"
-                        value={author}
-                        onChange={(e) => { setAuthor(e.target.value) }}
+                        value={description}
+                        onChange={(e) => { setDescription(e.target.value) }}
                     />
                 </div>
                 <div>
                     <input type="submit"
-                    value="Edit Book">
+                    value="Edit Product">
                         </input>
                 </div>
             </form>

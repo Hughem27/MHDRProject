@@ -11,9 +11,10 @@ function BookItem(props) {
                 <p>{props.myBook.price}</p>
                 <Card.Body>
                     <blockquote className="blockquote mb-0">
-                        <img src={props.myBook.cover}></img>
+                        <img src={props.myBook.image}></img>
                         <footer>
-                            {props.myBook.author}
+                            {props.myBook.description
+                            }
                         </footer>
                     </blockquote>
                 </Card.Body>

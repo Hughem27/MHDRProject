@@ -33,8 +33,8 @@ async function main() {
 
 const bookSchema = new mongoose.Schema({
   title:String,
-  cover:String,
-  author:String,
+  image:String,
+  description:String,
   price:Number
 })
 
@@ -61,8 +61,8 @@ app.post('/api/book', (req,res)=>{
 
     bookModel.create({
       title:req.body.title,
-      cover:req.body.cover,
-      author:req.body.author,
+      image:req.body.image,
+      description:req.body.description,
       price:req.body.price
     })
     .then(()=>{ res.send("Book Created")})
