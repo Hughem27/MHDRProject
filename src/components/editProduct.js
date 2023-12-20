@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function Edit() {
+export default function EditProduct() {
     let {id} = useParams();
 
     const [title, setTitle] = useState('');
@@ -42,7 +42,7 @@ export default function Edit() {
 
         axios.put('http://localhost:4000/api/book/'+id, book)
         .then((res)=>{
-            navigate('/read');
+            navigate('/shop');
         })
         .catch(
             (error)=>{

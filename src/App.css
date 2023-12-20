@@ -24,6 +24,20 @@
   color: white;
 }
 
+.ShopProducts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  
+}
+
+.shopbuttons{
+  margin: 10px;
+  padding: 10px;
+}
+
 .App-link {
   color: #61dafb;
 }
