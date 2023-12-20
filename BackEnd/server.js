@@ -34,7 +34,8 @@ async function main() {
 const bookSchema = new mongoose.Schema({
   title:String,
   cover:String,
-  author:String
+  author:String,
+  price:Number
 })
 
 const bookModel = mongoose.model('dfgdfgdfgdfg5r5645634fggh', bookSchema);
@@ -61,7 +62,8 @@ app.post('/api/book', (req,res)=>{
     bookModel.create({
       title:req.body.title,
       cover:req.body.cover,
-      author:req.body.author
+      author:req.body.author,
+      price:req.body.price
     })
     .then(()=>{ res.send("Book Created")})
     .catch(()=>{ res.send("Book NOT Created")});

@@ -8,12 +8,12 @@ function BookItem(props) {
         <div>
             <Card>
                 <Card.Header>{props.myBook.title}</Card.Header>
+                <p>{props.myBook.price}</p>
                 <Card.Body>
                     <blockquote className="blockquote mb-0">
                         <img src={props.myBook.cover}></img>
                         <footer>
-                            {props.myBook.author 
-                            }
+                            {props.myBook.author}
                         </footer>
                     </blockquote>
                 </Card.Body>

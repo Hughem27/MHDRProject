@@ -8,6 +8,7 @@ export default function Edit() {
     const [title, setTitle] = useState('');
     const [cover, setCover] = useState('');
     const [author, setAuthor] = useState('');
+    const [price, setPrice] = useState('');
 
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ export default function Edit() {
                 setTitle(response.data.title);
                 setCover(response.data.cover);
                 setAuthor(response.data.author);
+                setPrice(response.data.price);
             })
             .catch(
                 (error)=>{
@@ -34,7 +36,8 @@ export default function Edit() {
         const book = {
             title:title,
             cover:cover,
-            author:author
+            author:author,
+            price:price
         }
 
         axios.put('http://localhost:4000/api/book/'+id, book)
@@ -64,6 +67,14 @@ export default function Edit() {
                         className="form-control"
                         value={cover}
                         onChange={(e) => { setCover(e.target.value) }}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Edit Book Price: </label>
+                    <input type="text"
+                        className="form-control"
+                        value={price}
+                        onChange={(e) => { setPrice(e.target.value) }}
                     />
                 </div>
                 <div className="form-group">

@@ -6,18 +6,21 @@ function Create() {
     const [title, setTitle] = useState('');
     const [cover, setCover] = useState('');
     const [author, setAuthor] = useState('');
+    const [price, setPrice] = useState('');
 
     const handleSubmit = (e)=>{
         e.preventDefault();
 
         console.log("Title: "+title+
         " Cover: "+cover+
-        " Author: "+author);
+        " Author: "+author+
+        " Price: "+price);
 
         const book = {
             title:title,
             cover:cover,
-            author:author
+            author:author,
+            price:price
         };
 
         axios.post('http://localhost:4000/api/book',book)
@@ -44,6 +47,14 @@ function Create() {
                         className="form-control"
                         value={cover}
                         onChange={(e) => { setCover(e.target.value) }}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Add Book Price: </label>
+                    <input type="text"
+                        className="form-control"
+                        value={price}
+                        onChange={(e) => { setPrice(e.target.value) }}
                     />
                 </div>
                 <div className="form-group">
