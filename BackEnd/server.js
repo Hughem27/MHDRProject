@@ -85,9 +85,6 @@ app.post('/login', async (req, res) => {
 });
 
 
-
-
-
 app.delete('/api/book/:id',async (req, res)=>{
   console.log("Delete: "+req.params.id);
 

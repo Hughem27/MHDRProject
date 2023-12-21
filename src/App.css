@@ -32,6 +32,16 @@
   padding: 2px;
   
 }
+.AddProducts{
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  margin: 2px;
+  padding: 2px;
+  /* background-color:#282c34; */
+  color: black;
+  
+}
 
 .myCards{
   height: 500px;

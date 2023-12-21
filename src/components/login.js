@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -8,6 +10,18 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    // const handleButtonClick = () => {
+    //     if (isLoggedIn) {
+    //         navigate('/path-to-navigate'); // Replace with your desired path
+    //     } else {
+    //         console.log("Not logged in");
+    //     }
+    // };
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -15,11 +29,16 @@ function Login() {
                 username,
                 password
             });
-            console.log('Server response:', response.data);
-            // Handle successful login here
+            console.log('Response from server:', response.data);
+            if (response.data === 'Login successful') {
+                setIsLoggedIn(true); // Update the login state
+                navigate('/');
+            } else {
+                // Handle login failure
+            }
         } catch (error) {
             console.error('Login failed:', error);
-            // Handle failed login here
+            // Handle error
         }
     };
 
@@ -44,7 +63,9 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <button type="submit">Login</button>
+            <button type="submit"
+                onClick={console.log(isLoggedIn)}
+            >Login</button>
         </form>
     );
 }
