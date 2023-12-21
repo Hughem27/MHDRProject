@@ -13,6 +13,7 @@ import EditProduct from './components/editProduct';
 import Login from './components/login';
 import Registration from './components/registration';
 import { useState, useEffect } from 'react';
+import About from './components/about';
 
 function App() {
 
@@ -33,8 +34,10 @@ function App() {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/create">Add Products</Nav.Link>
               <Nav.Link href="/shop">Shop</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/registration">Reg</Nav.Link>
-              {isLoggedIn === false && <Nav.Link href="/registration">Reg</Nav.Link>}
+             
 
             </Nav>
           </Container>
@@ -45,12 +48,11 @@ function App() {
           <Route path='/create' element={<Create></Create>}></Route>
           <Route path='/edit/:id' element={<EditProduct></EditProduct>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/about' element={<About></About>}></Route>
           <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path='/registration' element={<Registration></Registration>}></Route>
         </Routes>
-        {/* <Header></Header>
-      <Content></Content>
-      <Footer /> */}
+        <Footer></Footer>
       </div>
     </BrowserRouter>
   );

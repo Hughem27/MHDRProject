@@ -1,7 +1,14 @@
 function Footer() {
     return (
         <div>
-            <h2>This is my Footer in another component!</h2>
+           <div className="footer">
+            <div>
+                <p className="footer">&copy;Atlantic Technological University Galway </p>
+            </div>
+            <div>
+                <p> Data Representation & Querying Project 2023</p>
+            </div>
+        </div>
         </div>
     );
 }
