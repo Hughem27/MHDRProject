@@ -10,6 +10,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Create from './components/addProduct';
 import Shop from './components/shop';
 import EditProduct from './components/editProduct';
+import Login from './components/login';
+import Registration from './components/registration';
 
 function App() {
   return (
@@ -17,11 +19,12 @@ function App() {
     <div className="App">
        <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="/">Marks Data Rep Shop</Navbar.Brand>
+          <Navbar.Brand href="/">Marks DR Kwiki Mart</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/create">Add Products</Nav.Link>
             <Nav.Link href="/shop">Shop</Nav.Link>
+            <Nav.Link href="/registration">Reg</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -30,6 +33,8 @@ function App() {
         <Route path='/shop' element={<Shop></Shop>}></Route>
         <Route path='/create' element={<Create></Create>}></Route>
         <Route path='/edit/:id' element={<EditProduct></EditProduct>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/registration' element={<Registration></Registration>}></Route>
       </Routes>
       {/* <Header></Header>
       <Content></Content>

@@ -4,9 +4,11 @@ function Home() {
             <div className="container px-4 px-lg-5">
 
                 <div className="row gx-4 gx-lg-5 align-items-center my-5">
-                    <div className="col-lg-7"><img className="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+                    <div className="col-lg-7"><img className="img-fluid rounded mb-4 mb-lg-0" src="https://images.fanpop.com/images/image_uploads/Canadian-Kwik-E-Mart-the-simpsons-movie-384841_1024_768.jpg" alt="..." /></div>
+                    {/* <div className="col-lg-7"><img className="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div> */}
+                    
                     <div className="col-lg-5">
-                        <h1 className="font-weight-light">Mark Hughes's Data Rep Shop</h1>
+                        <h1 className="font-weight-light">Marks DR Kwiki Mart</h1>
                         <p>This is a my project to sell you stuff. To See products on sale click on the navbar shop, to add products to the range click add products </p>
                         <a className="btn btn-primary" href="shop">See our products here!</a>
                     </div>
@@ -41,7 +43,7 @@ function Home() {
                                 <h2 className="card-title">Login</h2>
                                 <p className="card-text">Login to add add or edit products.</p>
                             </div>
-                            <div className="card-footer"><a className="btn btn-primary btn-sm" href="#!">Click here to login!</a></div>
+                            <div className="card-footer"><a className="btn btn-primary btn-sm" href="/login">Click here to login!</a></div>
                         </div>
                     </div>
                 </div>

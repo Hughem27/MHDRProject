@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import '../App.css';
 
 
 function ProductItem(props) {
@@ -10,8 +11,8 @@ function ProductItem(props) {
 
         <div>
             
-            <div>
-                <Card>
+            <div style={{padding: '5px'}}>
+                <Card style={{height:'500px', width: '325px'}}>
                     <Card.Header><h3>{props.myBook.title}</h3></Card.Header>
 
                     <Card.Body>

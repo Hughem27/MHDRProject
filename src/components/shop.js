@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Products from "./product";
 
+
 function Shop() {
 
     const [data, setData] = useState([]);
@@ -47,6 +48,8 @@ function Shop() {
                     <Products myBooks={data} ReloadData={Reload} className='container'></Products>
                 </div>
             </div>
+
+            
         </div>
     );
 

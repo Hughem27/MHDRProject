@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 4000
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 
 
 app.use(cors());
@@ -38,7 +39,54 @@ const bookSchema = new mongoose.Schema({
   price:Number
 })
 
-const bookModel = mongoose.model('dfgdfgdfgdfg5r5645634fggh', bookSchema);
+const bookModel = mongoose.model('products', bookSchema);
+
+const UserSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true }
+});
+
+const User = mongoose.model('User', UserSchema);
+
+
+// Post for registering a user
+app.post('/register', async (req, res) => {
+  try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = new User({
+          username: req.body.username,
+          password: hashedPassword
+      });
+
+      await newUser.save();
+      res.status(201).send('User created');
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).send('Error registering new user');
+  }
+});
+
+//  Post for login
+app.post('/login', async (req, res) => {
+  try {
+      console.log('Login request received:', req.body);
+      const user = await User.findOne({ username: req.body.username });
+      if (user && await bcrypt.compare(req.body.password, user.password)) {
+          console.log('Login successful for:', req.body.username);
+          res.send('Login successful');
+      } else {
+          console.log('Invalid credentials for:', req.body.username);
+          res.status(400).send('Invalid credentials');
+      }
+  } catch (error) {
+      console.error('Login error:', error);
+      res.status(500).send('Error during login');
+  }
+});
+
+
+
+
 
 app.delete('/api/book/:id',async (req, res)=>{
   console.log("Delete: "+req.params.id);
