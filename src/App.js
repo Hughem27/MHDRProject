@@ -15,6 +15,7 @@ import Registration from './components/registration';
 import { useState, useEffect } from 'react';
 import About from './components/about';
 import AdminPage from './components/adminPage';
+import ViewProducts from './components/viewProducts';
 
 function App() {
 
@@ -36,12 +37,11 @@ function App() {
           <Container>
             <Navbar.Brand href="/">Marks DR Kwiki Mart</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/create">Add Products</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>              
               <Nav.Link href="/shop">Shop</Nav.Link>
+              <Nav.Link href="/shopproducts">Shop</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/about">About Us</Nav.Link>
-              <Nav.Link href="/registration">Reg</Nav.Link>
+              <Nav.Link href="/about">About Us</Nav.Link>          
 
 
             </Nav>
@@ -50,6 +50,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/shop' element={<Shop></Shop>}></Route>
+          <Route path='/shopproducts' element={<ViewProducts></ViewProducts>}></Route>
           <Route path='/create' element={<Create></Create>}></Route>
           <Route path='/edit/:id' element={<EditProduct></EditProduct>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>

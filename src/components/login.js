@@ -32,7 +32,7 @@ function Login() {
             console.log('Response from server:', response.data);
             if (response.data === 'Login successful') {
                 setIsLoggedIn(true); // Update the login state
-                navigate('/');
+                navigate('/adminpage');
             } else {
                 // Handle login failure
             }
