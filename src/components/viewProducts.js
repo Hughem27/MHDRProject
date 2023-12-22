@@ -13,7 +13,7 @@ function ViewProducts() {
     useEffect(
         () => {
 
-            axios.get('http://localhost:4000/api/books')
+            axios.get('http://localhost:4000/api/products')
                 .then(
                     (response) => {
                         setData(response.data)
@@ -29,7 +29,7 @@ function ViewProducts() {
     );
 
     const Reload = (e) => {
-        axios.get('http://localhost:4000/api/books')
+        axios.get('http://localhost:4000/api/products')
             .then(
                 (response) => {
                     setData(response.data)
@@ -48,7 +48,7 @@ function ViewProducts() {
             <hr></hr>
             <div><h3>Product Range</h3>
                 <div className="ShopProducts">
-                    <ViewProduct myBooks={data} ReloadData={Reload} className='container'></ViewProduct>
+                    <ViewProduct myProducts={data} ReloadData={Reload} className='container'></ViewProduct>
                 </div>
             </div>
 

@@ -13,24 +13,24 @@ function ProductItem(props) {
             
             <div style={{padding: '5px'}}>
                 <Card style={{height:'500px', width: '325px'}}>
-                    <Card.Header><h3>{props.myBook.title}</h3></Card.Header>
+                    <Card.Header><h3>{props.myProduct.title}</h3></Card.Header>
 
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
-                            <img src={props.myBook.image}></img>
+                            <img src={props.myProduct.image}></img>
                             <footer>
-                                <h5>Product Price: €{props.myBook.price}</h5>
-                                {props.myBook.description}
+                                <h5>Product Price: €{props.myProduct.price}</h5>
+                                {props.myProduct.description}
                             </footer>
                         </blockquote>
                     </Card.Body>
                     <div className='ShopProducts'>
-                        <Link to={'/edit/' + props.myBook._id} className='btn btn-primary' style={{ width: '200px' }}>Edit</Link>
+                        <Link to={'/edit/' + props.myProduct._id} className='btn btn-primary' style={{ width: '200px' }}>Edit</Link>
                         <Button className='shopbuttons' variant='danger' onClick={
                             (e) => {
                                 e.preventDefault();
 
-                                axios.delete('http://localhost:4000/api/book/' + props.myBook._id)
+                                axios.delete('http://localhost:4000/api/product/' + props.myProduct._id)
                                     .then((res) => {
                                         let reload = props.Reload();
                                     })

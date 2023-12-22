@@ -2,9 +2,9 @@ import ProductItem from "./productItem";
 
 function Products(props){
 
-    return props.myBooks.map(
-        (book)=>{
-            return <ProductItem myBook={book} key={book._id} Reload={()=>{props.ReloadData();}}></ProductItem>
+    return props.myProducts.map(
+        (product)=>{
+            return <ProductItem myProduct={product} key={product._id} Reload={()=>{props.ReloadData();}}></ProductItem>
         }
     );
 

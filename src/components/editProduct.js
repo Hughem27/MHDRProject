@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function EditProduct() {
-    let {id} = useParams();
+    let { id } = useParams();
 
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
@@ -13,42 +13,48 @@ export default function EditProduct() {
     const navigate = useNavigate();
 
     useEffect(
-        ()=>{
+        () => {
 
-            axios.get('http://localhost:4000/api/book/'+id)
-            .then((response)=>{
-                setTitle(response.data.title);
-                setImage(response.data.image);
-                setDescription(response.data.description);
-                setPrice(response.data.price);
-            })
-            .catch(
-                (error)=>{
-                    console.log(error);
-                }
-            );
-        },[]
+            axios.get('http://localhost:4000/api/product/' + id)
+                .then((response) => {
+                    setTitle(response.data.title);
+                    setImage(response.data.image);
+                    setDescription(response.data.description);
+                    setPrice(response.data.price);
+                })
+                .catch(
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+        }, []
     );
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        const book = {
-            title:title,
-            image:image,
-            description:description,
-            price:price
+        const product = {
+            title: title,
+            image: image,
+            description: description,
+            price: price
         }
 
-        axios.put('http://localhost:4000/api/book/'+id, book)
-        .then((res)=>{
-            navigate('/shop');
-        })
-        .catch(
-            (error)=>{
-                console.log(error)
-            });
+        axios.put('http://localhost:4000/api/product/' + id, product)
+            .then((res) => {
+                navigate('/shop');
+            })
+            .catch(
+                (error) => {
+                    console.log(error)
+                });
     }
+
+
+    const backToAdmin = () => {
+        navigate('/adminpage'); // Navigate to the '/adminpage'
+    };
+
     return (
         <div>
             <h2>Hello from Edit component!</h2>
@@ -87,10 +93,15 @@ export default function EditProduct() {
                 </div>
                 <div>
                     <input type="submit"
-                    value="Edit Product">
-                        </input>
+                        value="Edit Product">
+                    </input>
                 </div>
             </form>
+
+            {/* Back to Admin Center Page */}
+            <div>
+                <button onClick={backToAdmin}>Back to Control Center</button>
+            </div>
 
         </div>
     );

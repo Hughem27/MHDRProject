@@ -4,9 +4,9 @@ import ViewProductItem from './viewProductItems';
 
 function ViewProducts(props){
 
-    return props.myBooks.map(
-        (book)=>{
-            return <ViewProductItem myBook={book} key={book._id} Reload={()=>{props.ReloadData();}}></ViewProductItem>
+    return props.myProducts.map(
+        (product)=>{
+            return <ViewProductItem myProduct={product} key={product._id} Reload={()=>{props.ReloadData();}}></ViewProductItem>
         }
     );
 

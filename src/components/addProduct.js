@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 function Create() {
 
@@ -8,6 +8,12 @@ function Create() {
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+
+    const navigate = useNavigate();
+
+    const backToAdmin = () => {
+        navigate('/adminpage'); // Navigate to the '/adminpage'
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,21 +23,21 @@ function Create() {
             " Description: " + description +
             " Price: " + price);
 
-        const book = {
+        const product = {
             title: title,
             image: image,
             description: description,
             price: price
         };
 
-        axios.post('http://localhost:4000/api/book', book)
+        axios.post('http://localhost:4000/api/product', product)
             .then()
             .catch();
 
     }
     // some comment
     return (
-        <div >  
+        <div >
             <h2>Add Product Page</h2>
             <div className="AddProducts">
                 <div style={{ background: 'solid', width: '40%' }}>
@@ -70,13 +76,18 @@ function Create() {
                         </div>
                         <div>
                             <input type="submit"
-                            className="shopbuttons"
+                                className="shopbuttons"
                                 value="Add Product"
                             >
                             </input>
 
                         </div>
                     </form>
+
+                    {/* Back to Admin Center Page */}
+                    <div>
+                        <button onClick={backToAdmin}>Back to Control Center</button>
+                    </div>
                 </div>
             </div>
         </div>

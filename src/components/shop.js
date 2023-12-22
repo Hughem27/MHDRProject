@@ -10,7 +10,7 @@ function Shop() {
     useEffect(
         () => {
 
-            axios.get('http://localhost:4000/api/books')
+            axios.get('http://localhost:4000/api/products')
                 .then(
                     (response) => {
                         setData(response.data)
@@ -26,7 +26,7 @@ function Shop() {
     );
 
     const Reload = (e) => {
-        axios.get('http://localhost:4000/api/books')
+        axios.get('http://localhost:4000/api/products')
             .then(
                 (response) => {
                     setData(response.data)
@@ -45,7 +45,7 @@ function Shop() {
             <hr></hr>
             <div><h3>Product Range</h3>
                 <div className="ShopProducts">
-                    <Products myBooks={data} ReloadData={Reload} className='container'></Products>
+                    <Products myProducts={data} ReloadData={Reload} className='container'></Products>
                 </div>
             </div>
 

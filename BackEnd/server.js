@@ -32,14 +32,14 @@ async function main() {
   
 }
 
-const bookSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   title:String,
   image:String,
   description:String,
   price:Number
 })
 
-const bookModel = mongoose.model('products', bookSchema);
+const productModel = mongoose.model('products', productSchema);
 
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
@@ -85,33 +85,33 @@ app.post('/login', async (req, res) => {
 });
 
 
-app.delete('/api/book/:id',async (req, res)=>{
+app.delete('/api/product/:id',async (req, res)=>{
   console.log("Delete: "+req.params.id);
 
-  let book = await bookModel.findByIdAndDelete(req.params.id);
-  res.send(book);
+  let product = await productModel.findByIdAndDelete(req.params.id);
+  res.send(product);
 })
 
 
-app.put('/api/book/:id', async(req, res)=>{
+app.put('/api/product/:id', async(req, res)=>{
   console.log("Update: "+req.params.id);
 
-  let book = await bookModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
-  res.send(book);
+  let product = await productModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
+  res.send(product);
 })
 
 
-app.post('/api/book', (req,res)=>{
+app.post('/api/product', (req,res)=>{
     console.log(req.body);
 
-    bookModel.create({
+    productModel.create({
       title:req.body.title,
       image:req.body.image,
       description:req.body.description,
       price:req.body.price
     })
-    .then(()=>{ res.send("Book Created")})
-    .catch(()=>{ res.send("Book NOT Created")});
+    .then(()=>{ res.send("product Created")})
+    .catch(()=>{ res.send("product NOT Created")});
 
 })
 
@@ -119,17 +119,17 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/api/books', async(req, res)=>{
+app.get('/api/products', async(req, res)=>{
     
-  let books = await bookModel.find({});
-  res.json(books);
+  let products = await productModel.find({});
+  res.json(products);
 })
 
-app.get('/api/book/:identifier',async (req,res)=>{
+app.get('/api/product/:identifier',async (req,res)=>{
   console.log(req.params.identifier);
 
-  let book = await bookModel.findById(req.params.identifier);
-  res.send(book);
+  let product = await productModel.findById(req.params.identifier);
+  res.send(product);
 })
 
 app.listen(port, () => {

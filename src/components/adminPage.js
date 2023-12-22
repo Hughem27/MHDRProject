@@ -25,7 +25,7 @@ function AdminPage() {
                                 <h2 className="card-title">Add Products Here</h2>
 
                             </div>
-                            <div className="card-footer"><a className="btn btn-primary btn-sm" href="shop">Add Products</a></div>
+                            <div className="card-footer"><a className="btn btn-primary btn-sm" href="create">Add Products</a></div>
                         </div>
                     </div>
                     <div className="col-md-4 mb-5">
@@ -40,10 +40,10 @@ function AdminPage() {
                     <div className="col-md-4 mb-5">
                         <div className="card h-100">
                             <div className="card-body">
-                                <h2 className="card-title">Back Home</h2>
+                                <h2 className="card-title">Edit Products</h2>
                                 <p className="card-text"></p>
                             </div>
-                            <div className="card-footer"><a className="btn btn-primary btn-sm" href="/">Home</a></div>
+                            <div className="card-footer"><a className="btn btn-primary btn-sm" href="shop">Edit Products</a></div>
 
 
                         </div>
