@@ -14,15 +14,20 @@ import Login from './components/login';
 import Registration from './components/registration';
 import { useState, useEffect } from 'react';
 import About from './components/about';
+import AdminPage from './components/adminPage';
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log("login = " + isLoggedIn)
 
+ 
+
   useEffect(() => {
     console.log("login = " + isLoggedIn);
   }, [isLoggedIn]);
+
+
 
   return (
     <BrowserRouter>
@@ -37,7 +42,7 @@ function App() {
               <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/registration">Reg</Nav.Link>
-             
+
 
             </Nav>
           </Container>
@@ -50,8 +55,11 @@ function App() {
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path='/adminpage' element={<AdminPage></AdminPage>} />
           <Route path='/registration' element={<Registration></Registration>}></Route>
         </Routes>
+
+        
         <Footer></Footer>
       </div>
     </BrowserRouter>
