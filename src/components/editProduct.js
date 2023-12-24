@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function EditProduct() {
+    //  Passing id into our useParams function
     let { id } = useParams();
 
+    //  Initializing our attributes of products
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
@@ -12,6 +14,8 @@ export default function EditProduct() {
 
     const navigate = useNavigate();
 
+
+    // Our useEffect Hook to get the products
     useEffect(
         () => {
 
@@ -30,9 +34,11 @@ export default function EditProduct() {
         }, []
     );
 
+    //  Handle submit function
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        //  passing in the product details to match the inialized ones
         const product = {
             title: title,
             image: image,
@@ -40,6 +46,7 @@ export default function EditProduct() {
             price: price
         }
 
+        //  putting in our new edited products
         axios.put('http://localhost:4000/api/product/' + id, product)
             .then((res) => {
                 navigate('/shop');

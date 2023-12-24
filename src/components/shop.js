@@ -6,7 +6,7 @@ import Products from "./product";
 function Shop() {
 
     const [data, setData] = useState([]);
-
+//  Using useEffect hook to get products
     useEffect(
         () => {
 
@@ -24,7 +24,7 @@ function Shop() {
 
         }, []
     );
-
+//  Reloading procucts keeping them up to date
     const Reload = (e) => {
         axios.get('http://localhost:4000/api/products')
             .then(

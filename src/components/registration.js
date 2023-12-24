@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import { useNavigate } from 'react-router-dom';
 
 function Registration() {
+    //  Initalizing attributes for reg
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,7 +14,8 @@ function Registration() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {            
+        try {       
+                //  awaiting the successful post for reg of a new user then nav to admin page, if fail send error message
             const response = await axios.post('http://localhost:4000/register', { username, password });
             console.log(response.data);
             navigate('/adminpage');     

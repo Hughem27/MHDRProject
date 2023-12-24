@@ -3,7 +3,7 @@
 function AdminPage() {
 
 
-
+// Control Center for staff to add, edit and delete products. Also ability to register, edit and delte new staff user accounts
     return (
         <div>
             <div className="container px-4 px-lg-5">

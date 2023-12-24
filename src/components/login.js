@@ -6,13 +6,16 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 function Login() {
+    // Initializing details required for user login
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    // Handling the login for users
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            // wait for successful user login then nav to admin page, if not send error
             const response = await axios.post('http://localhost:4000/login', { username, password });
             if (response.data === 'Login successful') {
                 navigate('/adminpage');

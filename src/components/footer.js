@@ -6,7 +6,7 @@ function Footer() {
                 <p className="footer">&copy;Atlantic Technological University Galway </p>
             </div>
             <div>
-                <p> Data Representation & Querying Project 2023</p>
+                {/* <p> Data Representation & Querying Project 2023</p> */}
             </div>
         </div>
         </div>

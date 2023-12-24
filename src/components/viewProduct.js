@@ -1,7 +1,7 @@
 import ProductItem from "./productItem";
 import ViewProductItem from './viewProductItems'; 
 
-
+//  Viewing products
 function ViewProducts(props){
 
     return props.myProducts.map(

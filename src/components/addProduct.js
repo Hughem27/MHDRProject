@@ -4,25 +4,28 @@ import { useNavigate } from "react-router-dom";
 
 function Create() {
 
+    // Initializing product attributes
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
 
+    
     const navigate = useNavigate();
-
     const backToAdmin = () => {
         navigate('/adminpage'); // Navigate to the '/adminpage'
     };
 
+    // Handling the add prodcut function
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("Title: " + title +
-            " Image: " + image +
-            " Description: " + description +
-            " Price: " + price);
+        // console.log("Title: " + title +
+        //     " Image: " + image +
+        //     " Description: " + description +
+        //     " Price: " + price);
 
+        //  Product Details
         const product = {
             title: title,
             image: image,
@@ -30,10 +33,11 @@ function Create() {
             price: price
         };
 
+        // Posting the product back to the server and navigating back to home page after product has been added 
         axios.post('http://localhost:4000/api/product', product)
             .then()
             .catch();
-
+            navigate('/');     
     }
     // some comment
     return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function Home({ isLoggedIn }) {
+    // this is to make the login invisible if already logged in but feature is buggy and doesn't always work so took it out of code below
     const loginVisible = {
         display: isLoggedIn ? 'none' : 'block'
     };
@@ -15,14 +16,20 @@ function Home({ isLoggedIn }) {
                     {/* Text */}
                     <div className="col-lg-5">
                         <h1 className="font-weight-light">Marks DR Kwiki-E-Mart</h1>
-                        <p>This is my project to sell you stuff. To see products on sale click on the navbar shop, to add products to the range click add products.</p>
+                        <p>
+                            To place an order, send the items of choice, quantity, your name, address and other necessary information to -
+                            <a href="mailto:sales@MarksKwikEMart.com" style={{ color: 'blue', textDecoration: 'underline', fontStyle: 'italic' }}>
+                                 sales@MarksKwikEMart.com
+                            </a>
+                        </p>
+                        <p>After your order is received you will be sent an email with information on the payment process.</p>
                         <a className="btn btn-primary" href="shopproducts">See our products here!</a>
                     </div>
                 </div>
 
                 {/* Additional Info Section */}
                 <div className="card text-white bg-secondary my-5 py-4 text-center">
-                    <div className="card-body"><p className="text-white m-0">Some other cool stuff or something... idk</p></div>
+                    <div className="card-body"><h3 className="text-white m-0">See the features of our store below!</h3></div>
                 </div>
 
                 {/* Cards Section */}
@@ -52,7 +59,7 @@ function Home({ isLoggedIn }) {
                         <div className="card h-100">
                             <div className="card-body">
                                 <h2 className="card-title">Login</h2>
-                                <p className="card-text">Login to add or edit products.</p>
+                                <p className="card-text">Staff Login</p>
                             </div>
                             <div className="card-footer"><a className="btn btn-primary btn-sm" href="/login">Click here to login!</a></div>
                         </div>
@@ -62,7 +69,7 @@ function Home({ isLoggedIn }) {
                         <div className="card h-100">
                             <div style={loginVisible}>
                                 <div className="card-body">
-                                    <h2 className="card-title">Checkout out the xyz API</h2>
+                                    <h2 className="card-title">Checkout out exchange rates in real time</h2>
                                     <p className="card-text"></p>
                                 </div>
                                 <div className="card-footer"><a className="btn btn-primary btn-sm" href="/api-page">Click here to see it!</a></div>
