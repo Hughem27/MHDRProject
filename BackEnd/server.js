@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 const port = 4000
 const cors = require('cors');
-const bcrypt = require('bcrypt');
-require('dotenv').config();
+const bcrypt = require('bcrypt'); //  initializing bcrypt for encryption of user passwords
+require('dotenv').config(); //  had initializing dotenv for an API usage but swapped it out for another API that didnt require the .env
 
+// Using cors
 app.use(cors());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -14,6 +15,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+// init. bodyparser
 const bodyParser = require("body-parser");
 
 //Here we are configuring express to use body-parser as middle-ware.
@@ -21,17 +23,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// getting-started.js
+// init mongoose
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
-
+//  hooking up our mongodb
 async function main() {
   await mongoose.connect('mongodb+srv://g00384389:HD4bksPt35xJGUGp@datarep1.kus8esv.mongodb.net/?retryWrites=true&w=majority');
 
 
 }
 
+//  init. our mongoose scheme for products
 const productSchema = new mongoose.Schema({
   title: String,
   image: String,
@@ -39,34 +42,38 @@ const productSchema = new mongoose.Schema({
   price: Number
 })
 
+//  init. our product model
 const productModel = mongoose.model('products', productSchema);
 
+//  init. our user schema
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 });
 
+//  init. our user model
 const User = mongoose.model('User', UserSchema);
 
+//init. axios
 const axios = require('axios');
 
+//  previous api
+// app.get('/api/exchangeRates', async (req, res) => {
+//   try {
+//     const response = await axios.get('http://api.exchangeratesapi.io/v1/latest?access_key=788fc21b939b778549f33abc1c2a1724', {
+//       params: {
+//         access_key: process.env.EXCHANGE_RATES_API_KEY,
+//         base: 'GBP',
+//         symbols: 'USD,AUD,CAD,PLN,MXN'
+//       }
+//     });
 
-app.get('/api/exchangeRates', async (req, res) => {
-  try {
-    const response = await axios.get('http://api.exchangeratesapi.io/v1/latest?access_key=788fc21b939b778549f33abc1c2a1724', {
-      params: {
-        access_key: process.env.EXCHANGE_RATES_API_KEY,
-        base: 'GBP',
-        symbols: 'USD,AUD,CAD,PLN,MXN'
-      }
-    });
-
-    res.json(response.data); // Corrected to use 'response.data'
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error fetching exchange rates');
-  }
-});
+//     res.json(response.data); // Corrected to use 'response.data'
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Error fetching exchange rates');
+//   }
+// });
 
 
 // Post for registering a user
@@ -104,7 +111,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-
+// deleting products
 app.delete('/api/product/:id', async (req, res) => {
   console.log("Delete: " + req.params.id);
 
@@ -112,7 +119,7 @@ app.delete('/api/product/:id', async (req, res) => {
   res.send(product);
 })
 
-
+//  edit products
 app.put('/api/product/:id', async (req, res) => {
   console.log("Update: " + req.params.id);
 
@@ -120,7 +127,7 @@ app.put('/api/product/:id', async (req, res) => {
   res.send(product);
 })
 
-
+//  postt for updating products
 app.post('/api/product', (req, res) => {
   console.log(req.body);
 
