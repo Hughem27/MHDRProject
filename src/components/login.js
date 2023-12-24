@@ -4,26 +4,27 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 
 function Login() {
-    // Initializing details required for user login
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(''); // New state for error message
     const navigate = useNavigate();
 
-    // Handling the login for users
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setError(''); // Reset error message on new submission
         try {
-            // wait for successful user login then nav to admin page, if not send error
             const response = await axios.post('http://localhost:4000/login', { username, password });
             if (response.data === 'Login successful') {
                 navigate('/adminpage');
             } else {
-                // Handle login failure
+                setError('Invalid login credentials. Please try again.'); // Set error message on failure
             }
         } catch (error) {
             console.error('Login failed:', error);
+            setError('Login failed. Please try again later.'); // Set error message on exception
         }
     };
 
@@ -31,6 +32,7 @@ function Login() {
         <Container className="mt-5">
             <Form onSubmit={handleSubmit}>
                 <h2 className="mb-3">Login</h2>
+                {error && <Alert variant="danger">{error}</Alert>} {/* Display error message */}
                 <Form.Group className="mb-3">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
