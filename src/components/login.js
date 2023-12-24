@@ -32,7 +32,7 @@ function Login() {
         <Container className="mt-5">
             <Form onSubmit={handleSubmit}>
                 <h2 className="mb-3">Login</h2>
-                {error && <Alert variant="danger">{error}</Alert>} {/* Display error message */}
+                {error && <Alert variant="danger">{error}</Alert>} 
                 <Form.Group className="mb-3">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
